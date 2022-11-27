@@ -20,47 +20,50 @@ class Doctor(Employee):
     def __init__(self, name, age, contact, address):
         super().__init__(name, age, contact, address)
 
-    def checkUp (self, patientName):
-        print(f"{self.name} is performing a check up on {patientName}")
+    def check_up (self, patient_name):
+        print(f"{self.name} is performing a check up on {patient_name}")
 
-    def giveMedication(self, patientName):
-        print(f"{self.name} is giving a presciption to {patientName}")
+    def give_medication(self, patient_name):
+        print(f"{self.name} is writing a presciption for {patient_name}")
 
 #Assistant
 class Assistant(Employee):
     def __init__(self, name, age, contact, address):
         super().__init__(name, age, contact, address)
 
-    def recordPatientInfo(self, patientName):
-        print(f"{self.name} is recording {patientName}'s medical record.")
+    def record_patient_info(self, patient_name):
+        print(f"{self.name} is recording {patient_name}'s medical record.")
 
-    def schedAppointment(self, patientName):
-        print(f"{self.name} is scheduling an appointment for {patientName}")
-    
+    def sched_appointment(self, patient_name):
+        print(f"{self.name} is scheduling an appointment for {patient_name}")
 
 #Pharmacist
 class Pharmacist(Employee):
     def __init__(self, name, age, contact, address):
         super().__init__(name, age, contact, address)
 
-    def readPrescription(self, doctorName):
-        print(f"{self.name} is reading the Dr. {doctorName}'s prescription.")
+    def read_prescription(self, doctor_name):
+        print(f"{self.name} is reading the Dr. {doctor_name}'s prescription.")
 
-    def giveMedicine(self, patientName):
-        print(f"{self.name} is giving the medicine to {patientName}")
+    def give_medicine(self, patient_name):
+        print(f"{self.name} is giving the medicine to {patient_name}")
 
 #Patient
 class Patient (Person):
-    def __init__(self, name, age, contact, address):
-        super().__init__(name, age, contact, address)
+    def __init__(self):
+        self.name = "name"
+        self.age = "age"
+        self.contact = "contact"
+        self.address = "address"
+        self.concerns = "concerns"
 
     def introduction(self):
         super().introduction()
-
-    def makeAppointment(self):
+        
+    def make_appointment(self):
         print(f"{self.name} is making an appointment for a checkup.")
 
-    def buyMedicine(self):
+    def buy_medicine(self):
         print(f"{self.name} is buying a medicine.")
 
     def pay(self, payment):
