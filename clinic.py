@@ -1,17 +1,32 @@
 from person import *
+import json
+import os
 
 #Clinic
 class Clinic:
     def __init__(self):
         self.patient_queue = []
         self.patient_records = {} #patient name,age,contact,medical history
+        if os.path.exists('patient_records.json'):
+            pass
+        else:
+            f = open('patient_records.json','x')
+            f.close()
         
         #composition
-        self.doc=Doctor("Dr. AAA", 43, "09xxxxx", "where")
-        self.asst=Assistant("Asst. CCC", 26, "09xxxxx", "there")
+        self.doc=Doctor("The Doctor", 43, "09xxxxx", "where") #to be modified
+        self.asst=Assistant("The Assistant", 26, "09xxxxx", "there") #to be modified
         self.patient=Patient()
 
     def add_appointment(self):
+        if os.stat("patient_records.json").st_size == 0:
+            pass
+        else:
+            f = open('patient_records.json')
+            data = json.load(f)
+            self.patient_records = data
+            f.close()
+
         name = input("What is the name of the patient? ")
         self.patient.name = name
         
@@ -26,6 +41,10 @@ class Clinic:
                 self.old_patient_record()
             else:
                 self.new_patient_record()
+
+        with open('patient_records.json', 'w') as fp:
+            json.dump(self.patient_records, fp, indent=4)
+        fp.close()
 
     def finished_appointment(self):
         self.patient_queue.pop(0)
@@ -60,5 +79,18 @@ class Clinic:
 
     def checkup_with_prescription(self):
         self.doc.check_up(self.patient_queue[0])
-        print("\"It seems that you will be fine as long as you\ntake this medicine and rest a lot\"")
+        print("\"It seems that you will be fine as long as you take this medicine and rest a lot\"")
         self.doc.give_medication(self.patient_queue[0])        
+
+    def pay_checkup(self):
+        self.patient.pay("Check up Fee", 600)
+
+
+
+
+#test
+#c = Clinic()
+#c.add_appointment()
+#c.checkup_with_prescription()
+#c.pay_checkup()
+#c.finished_appointment()

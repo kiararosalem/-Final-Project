@@ -21,10 +21,10 @@ class Doctor(Employee):
         super().__init__(name, age, contact, address)
 
     def check_up (self, patient_name):
-        print(f"{self.name} is performing a check up on {patient_name}")
+        print(f"{self.name} is performing a check up on {patient_name}.")
 
     def give_medication(self, patient_name):
-        print(f"{self.name} is writing a presciption for {patient_name}")
+        print(f"{self.name} is writing a presciption for {patient_name}.")
 
 #Assistant
 class Assistant(Employee):
@@ -35,7 +35,7 @@ class Assistant(Employee):
         print(f"{self.name} is recording {patient_name}'s medical record.")
 
     def sched_appointment(self, patient_name):
-        print(f"{self.name} is scheduling an appointment for {patient_name}")
+        print(f"{self.name} is scheduling an appointment for {patient_name}.    ")
 
 #Pharmacist
 class Pharmacist(Employee):
@@ -46,7 +46,7 @@ class Pharmacist(Employee):
         print(f"{self.name} is reading the Dr. {doctor_name}'s prescription.")
 
     def give_medicine(self, patient_name):
-        print(f"{self.name} is giving the medicine to {patient_name}")
+        print(f"{self.name} is giving the medicine to {patient_name}.")
 
 #Patient
 class Patient (Person):
@@ -56,6 +56,7 @@ class Patient (Person):
         self.contact = "contact"
         self.address = "address"
         self.concerns = "concerns"
+        self.wallet = 1500
 
     def introduction(self):
         super().introduction()
@@ -66,5 +67,8 @@ class Patient (Person):
     def buy_medicine(self):
         print(f"{self.name} is buying a medicine.")
 
-    def pay(self, payment):
-        print(f"{self.name} is paying for {payment}")
+    def pay(self, payment, fee):
+        print(f"{self.name.capitalize()} is paying for {payment}.")
+        print(f"You currently have PHP{self.wallet}.")
+        self.wallet -= fee
+        print(f"You only have PHP{self.wallet} left.")
