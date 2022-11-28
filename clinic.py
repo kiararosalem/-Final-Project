@@ -17,6 +17,7 @@ class Clinic:
         self.doc=Doctor() 
         self.asst=Assistant() 
         self.patient=Patient()
+        self.med=Prescription()
 
     def introduce(self):
         print("Welcome to Solana's Clinic.")
@@ -30,13 +31,14 @@ class Clinic:
             self.patient_records = data
             f.close()
 
-        name = self.patient.name
+        name = input("What is your name? ")
+        self.patient.name = name
         
         if len(self.patient_queue) >= 10:
             print("Sorry we are currently full.")
         else:
             self.asst.sched_appointment(self.patient.name)
-            self.patient_queue.append(self.patient.name)
+            self.patient_queue.append(name)
             #print(self.patient_queue)
             if name.upper() in self.patient_records:
                 print("Already exist only append medical history") #to be deleted/modified
@@ -53,10 +55,15 @@ class Clinic:
         print("Thank you for visiting our clinic.")
 
     def new_patient_record(self):
-        age = self.patient.age
-        contact = self.patient.contact
-        address = self.patient.address
-        concerns = self.patient.concerns
+        age =  input("Enter your age: ")
+        contact = input("Kindly input your contact number: ")
+        address = input("Enter your address: ")
+        concerns = input("Are you feeling unwell?\nIf so, What symptom do you currently have? ")
+
+        self.patient.age = age
+        self.patient.contact = contact
+        self.patient.address = address
+        self.patient.concerns = concerns
 
         patient_info = {}
         self.asst.record_patient_info(self.patient.name)
@@ -69,7 +76,7 @@ class Clinic:
         #print(self.patient_records)
 
     def old_patient_record(self):
-        concerns = input("Are you feeling unwell?\nIf so, What symptom do you currently have?")
+        concerns = input("Are you feeling unwell?\nIf so, What symptom do you currently have? ")
         self.patient.concerns = concerns
         #accesing the nested dict
         self.patient_records[f"{self.patient.name.upper()}"]["Medical_History"].append(self.patient.concerns)
@@ -77,18 +84,19 @@ class Clinic:
     def checkup_with_prescription(self):
         self.doc.check_up(self.patient_queue[0])
         print("\"It seems that you will be fine as long as you take this medicine and rest a lot\"")
-        self.doc.give_medication(self.patient_queue[0])        
+        self.doc.give_medication(self.patient_queue[0])     
+        self.med.write_prescription(self.doc.name, self.patient.name, self.patient.wallet)   
 
     def pay_checkup(self):
-        self.patient.pay("Check up Fee", 400)
+        self.patient.pay("Check up Fee")
+        fee = 400
+        print(f"You currently have PHP{self.patient.wallet}.")
+        self.patient.wallet -= fee
+        print(f"You only have PHP{self.patient.wallet} left.")
 
-
-
-
-#test
-#c = Clinic()
-#c.introduce()
-#c.add_appointment()
-#c.checkup_with_prescription()
-#c.pay_checkup()
-#c.finished_appointment()
+class Prescription:
+    def write_prescription(self, doc_name, pname, wallet):
+        medicine = input("What medicine should i prescribe? ")
+        doctor_name = doc_name
+        patient_name = pname
+        current_patient_wallet = wallet
