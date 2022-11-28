@@ -1,10 +1,10 @@
 #person
 class Person:
-    def __init__(self, name, age, contact, address):
-        self.name = name 
-        self.age =  age 
-        self.contact = contact
-        self.address = address
+    def __init__(self):
+        self.name = input("What is your name? ")
+        self.age =  input("Enter your age: ")
+        self.contact = input("Kindly input your contact number: ")
+        self.address = input("Enter your address: ")
 
     def introduction(self):
         print(f"Hello, I am {self.name},{self.age} years old.")
@@ -17,8 +17,11 @@ class Employee(Person):
 
 #Doctor
 class Doctor(Employee):
-    def __init__(self, name, age, contact, address):
-        super().__init__(name, age, contact, address)
+    def __init__(self):
+        self.name = "Dr. Riza"
+        self.age = 34
+        self.contact = "09xxxx"
+        self.address = "Batangas City"
 
     def check_up (self, patient_name):
         print(f"{self.name} is performing a check up on {patient_name}.")
@@ -28,8 +31,11 @@ class Doctor(Employee):
 
 #Assistant
 class Assistant(Employee):
-    def __init__(self, name, age, contact, address):
-        super().__init__(name, age, contact, address)
+    def __init__(self):
+        self.name = "Asst. Hana"
+        self.age = 25
+        self.contact = "09xxxx"
+        self.address = "Batangas City"
 
     def record_patient_info(self, patient_name):
         print(f"{self.name} is recording {patient_name}'s medical record.")
@@ -39,8 +45,11 @@ class Assistant(Employee):
 
 #Pharmacist
 class Pharmacist(Employee):
-    def __init__(self, name, age, contact, address):
-        super().__init__(name, age, contact, address)
+    def __init__(self):
+        self.name = "Ms. Ella"
+        self.age = 23
+        self.contact = "09xxxx"
+        self.address = "Batangas City"
 
     def read_prescription(self, doctor_name):
         print(f"{self.name} is reading the Dr. {doctor_name}'s prescription.")
@@ -51,11 +60,8 @@ class Pharmacist(Employee):
 #Patient
 class Patient (Person):
     def __init__(self):
-        self.name = "name"
-        self.age = "age"
-        self.contact = "contact"
-        self.address = "address"
-        self.concerns = "concerns"
+        super().__init__()
+        self.concerns = input("Are you feeling unwell?\nIf so, What symptom do you currently have?")
         self.wallet = 1500
 
     def introduction(self):
