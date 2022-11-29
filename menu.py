@@ -11,4 +11,4 @@ c.pay_checkup()
 c.finished_appointment()
 
 d = DrugStore()
-d.buy()
+d.start()

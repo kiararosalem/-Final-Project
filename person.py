@@ -24,10 +24,10 @@ class Doctor(Employee):
         self.address = "Batangas City"
 
     def check_up (self, patient_name):
-        print(f"{self.name} is performing a check up on {patient_name}.")
+        print(f"{self.name} is performing a check up on {patient_name.capitalize()}.")
 
     def give_medication(self, patient_name):
-        print(f"{self.name} is writing a presciption for {patient_name}.")
+        print(f"{self.name} is writing a presciption for {patient_name.capitalize()}.")
 
 #Assistant
 class Assistant(Employee):
@@ -38,10 +38,10 @@ class Assistant(Employee):
         self.address = "Batangas City"
 
     def record_patient_info(self, patient_name):
-        print(f"{self.name} is recording {patient_name}'s medical record.")
+        print(f"{self.name} is recording {patient_name.capitalize()}'s medical record.")
 
     def sched_appointment(self, patient_name):
-        print(f"{self.name} is scheduling an appointment for {patient_name}.    ")
+        print(f"{self.name} is scheduling an appointment for {patient_name.capitalize()}.    ")
 
 #Pharmacist
 class Pharmacist(Employee):
@@ -52,10 +52,10 @@ class Pharmacist(Employee):
         self.address = "Batangas City"
 
     def read_prescribed(self, doctor_name):
-        print(f"{self.name} is reading the Dr. {doctor_name}'s prescription.")
+        print(f"{self.name} is reading the {doctor_name}'s prescription.")
 
     def give_medicine(self, patient_name):
-        print(f"{self.name} is giving the medicine to {patient_name}.")
+        print(f"{self.name} is giving the medicine to {patient_name.capitalize()}.")
 
 #Patient
 class Patient (Person):
@@ -67,11 +67,8 @@ class Patient (Person):
         self.concerns = "concerns"
         self.wallet = 1500
 
-    def introduction(self):
-        super().introduction()
-        
     def make_appointment(self):
-        print(f"{self.name} is making an appointment for a checkup.")
+        print(f"{self.name.capitalize()} is making an appointment for a checkup.") #not used yet
 
     def pay(self, payment):
         print(f"{self.name.capitalize()} is paying for {payment}.")
