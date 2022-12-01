@@ -1,12 +1,14 @@
 from doctor_information import *
 from patient_information import *
 from appointment import*
+from medicine_list import*
 
 class Menu:
     def __init__(self):
         self.doc=Doctor()
         self.patient=Patient()
         self.appointment=Appointment()
+        self.med=Medicine_list()
 
     def main_menu(self):
         while True:
@@ -150,15 +152,15 @@ class Menu:
             print("\n\t\t[7] Exit")
             choice = input("\n\n\t\tWhere do you want to go? ")
             if choice == '1':
-                pass    #add
+              self.med.add_medicine()  #add
             elif choice == '2':
-                pass    #search
+              self.med.search_medicine()   #search
             elif choice == '3':
-                pass    #view/display/show
+                self.med.display_medicine()   #view/display/show
             elif choice == '4':
-                pass    #update/modify
+                self.med.update_medicine()   #update/modify
             elif choice == '5':
-                pass    #delete
+                self.med.delete_medicine()    #delete
             elif choice == '6':
                 return
             elif choice == '7':
@@ -197,9 +199,7 @@ class Menu:
             else:
                 print("\n\n\t\tInvalid choice.") 
 
-
-
-
+                
 #driver
 start=Menu()
 start.main_menu()
