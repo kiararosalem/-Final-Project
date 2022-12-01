@@ -1,6 +1,5 @@
 from doctor_information import *
 from patient_information import *
-from appointment import*
 from medicine_list import*
 
 
@@ -8,7 +7,6 @@ class Menu:
     def __init__(self):
         self.doc=Doctor()
         self.patient=Patient()
-        self.appointment=Appointment()
         self.med=Medicine_list()
 
     def main_menu(self):
@@ -37,9 +35,8 @@ class Menu:
             print("\n\n\t\t[1] Patient Records")
             print("\n\t\t[2] Doctor's Informations")
             print("\n\t\t[3] Medicine List")
-            print("\n\t\t[4] Appointment List")
-            print("\n\t\t[5] Go back to Main Menu")
-            print("\n\t\t[6] Exit")
+            print("\n\t\t[4] Go back to Main Menu")
+            print("\n\t\t[5] Exit")
             choice = input("\n\n\t\tWhere do you want to go? ")
             if choice == '1':
                 self.patient_records_menu()
@@ -48,10 +45,8 @@ class Menu:
             elif choice == '3':
                 self.medicine_menu()
             elif choice == '4':
-                self.appointment_menu()
-            elif choice == '5':
                 return
-            elif choice == '6':
+            elif choice == '5':
                 exit()
             else:
                 print("\n\n\t\tInvalid choice.") 
@@ -157,7 +152,8 @@ class Menu:
             elif choice == '2':
               self.med.search_medicine()   #search
             elif choice == '3':
-                self.med.display_medicine()   #view/display/show
+                self.med.display_medicine()
+                input("\t\tPress enter to continue.")   #view/display/show
             elif choice == '4':
                 self.med.update_medicine()   #update/modify
             elif choice == '5':
@@ -169,38 +165,9 @@ class Menu:
             else:
                 print("\n\n\t\tInvalid choice.") 
 
-    def appointment_menu(self):
-        while True:
-            print ('-'*70)
-            print("\n\n\t\t-----Appointment Menu-----\n\n")
-            print ('-'*70)
-            print("\n\n\t\t[1] Add new Appointment")
-            print("\n\t\t[2] Search an Appointment")
-            print("\n\t\t[3] View Appointment lists")
-            print("\n\t\t[4] Modify an Appointment")
-            print("\n\t\t[5] Delete an Appointment")
-            print("\n\t\t[6] Go back to Admin Menu")
-            print("\n\t\t[7] Exit")
-            choice = input("\n\n\t\tWhere do you want to go? ")
-            if choice == '1':
-                self.appointment.add_appointment()    #add
-            elif choice == '2':
-                self.appointment.search_appointment()   #search
-            elif choice == '3':
-                self.appointment.show_appointment_info()
-                input("\t\tPress enter to continue.")    #view/display/show
-            elif choice == '4':
-                self.appointment.update_appointment() #update/modify
-            elif choice == '5':
-                self.appointment.delete_appointment()    #delete
-            elif choice == '6':
-                return
-            elif choice == '7':
-                exit()
-            else:
-                print("\n\n\t\tInvalid choice.") 
+    
 
-                
+            
 #driver
 start=Menu()
 start.main_menu()
