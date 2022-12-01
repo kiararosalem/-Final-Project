@@ -36,6 +36,7 @@ class Patient:
                 patient_info["Age"] = input("\t\tWhat is the patient's age? ")
                 patient_info["Gender"] = input("\t\tWhat is the patient's gender? ")
                 patient_info["Address"] = input("\t\tWhat is the patient's address? ")
+                patient_info["Ailment"] = input("\t\tWhat is the patient's ailment?")
                 self.patient_records[patient_id] = patient_info  #putting the patient_info dictionary inside the patient_records dictionary
         except:
             print("\t\tAn error occurred.")
@@ -55,6 +56,7 @@ class Patient:
             self.patient_records[update]["Age"] = input("\t\tWhat will be the updated age? ")
             self.patient_records[update]["Gender"] = input("\t\tWhat will be the updated gender? ")
             self.patient_records[update]["Address"] = input("\t\tWhat will be the updated address? ")
+            self.patient_records[update]["Ailment"]= input("\t\tWhat will be the updated ailment? ")
             self.write_to_file()
 
     def show_patient_info(self):  #display informations
@@ -64,7 +66,7 @@ class Patient:
         print(f"\t\tCurrent number of Patient:{len(self.patient_records)}")
         print('-'*70)
         for patient_id, patient_info in self.patient_records.items():
-            print("\t\Patient ID:", patient_id)
+            print("\t\tPatient ID:", patient_id)
             for key in patient_info:
                 print(f"\t\t{key}: {patient_info[key]}")
             print('-'*70)
@@ -76,7 +78,7 @@ class Patient:
             delete = input("\t\tChoose the patient id that you want to delete: ")
             self.patient_records[delete]
         except KeyError:   #if not it will print out the error message
-            print("\t\Patient's information not found.")
+            print("\t\tPatient's information not found.")
             input("\t\tPress enter to continue.")
         else:   #this will execute if the try block executed
             del self.patient_records[delete]

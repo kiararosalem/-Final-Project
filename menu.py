@@ -3,6 +3,7 @@ from patient_information import *
 from appointment import*
 from medicine_list import*
 
+
 class Menu:
     def __init__(self):
         self.doc=Doctor()
