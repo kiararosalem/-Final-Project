@@ -1,8 +1,10 @@
 from doctor_information import *
+from patient_information import *
 
 class Menu:
     def __init__(self):
         self.doc=Doctor()
+        self.patient=Patient()
     
     def main_menu(self):
         while True:
@@ -60,7 +62,7 @@ class Menu:
             print("\n\t\t[4] Exit")
             choice = input("\n\n\t\tWhere do you want to go? ")
             if choice == '1':
-                pass    #put the method for adding an appointment
+                pass 
             elif choice == '2':
                 pass    #put the method for buying medicine
             elif choice == '3':
@@ -84,15 +86,16 @@ class Menu:
             print("\n\t\t[7] Exit")
             choice = input("\n\n\t\tWhere do you want to go? ")
             if choice == '1':
-                pass    #add
+                self.patient.add_patient()
             elif choice == '2':
-                pass    #search
+                self.patient.search_patient()
             elif choice == '3':
-                pass    #view/display/show
+                self.patient.show_patient_info()
+                input("\t\tPress enter to continue.")
             elif choice == '4':
-                pass    #update/modify
+                self.patient.update_patient()
             elif choice == '5':
-                pass    #delete
+                self.patient.delete_patient()
             elif choice == '6':
                 return
             elif choice == '7':
