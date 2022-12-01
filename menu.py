@@ -1,11 +1,13 @@
 from doctor_information import *
 from patient_information import *
+from appointment import*
 
 class Menu:
     def __init__(self):
         self.doc=Doctor()
         self.patient=Patient()
-    
+        self.appointment=Appointment()
+
     def main_menu(self):
         while True:
             print ('-'*70)
@@ -178,15 +180,16 @@ class Menu:
             print("\n\t\t[7] Exit")
             choice = input("\n\n\t\tWhere do you want to go? ")
             if choice == '1':
-                pass    #add
+                self.appointment.add_appointment()    #add
             elif choice == '2':
-                pass    #search
+                self.appointment.search_appointment()   #search
             elif choice == '3':
-                pass    #view/display/show
+                self.appointment.show_appointment_info()
+                input("\t\tPress enter to continue.")    #view/display/show
             elif choice == '4':
-                pass    #update/modify
+                self.appointment.update_appointment() #update/modify
             elif choice == '5':
-                pass    #delete
+                self.appointment.delete_appointment()    #delete
             elif choice == '6':
                 return
             elif choice == '7':
