@@ -26,7 +26,7 @@ class Medicine_list:
     def add_medicine(self):   #add medicine 
         self.load_from_file()
         try:
-            ref_id = input("\t\tEnter the Medicine's id/identity: ")
+            ref_id = input("\t\tEnter the Medicine's id: ")
             if ref_id in self.medicine_list:   #checks if the id already exists
                 print("\t\tID already exists.")
                 input("\t\tPress enter to continue.")
@@ -48,7 +48,7 @@ class Medicine_list:
             self.medicine_list[search]
 
         except KeyError:  #if the try block fails the except will catch the error
-            print(f"\t\t{search}  The medicine does not exist")
+            print(f"\t\t{search} does not exist")
             input("\t\tPress enter to continue.")
 
         else:   #this will execute if the try block executed
@@ -62,10 +62,10 @@ class Medicine_list:
         self.load_from_file()
         print('-'*70)
         print("\t\t-Medicine List-")
-        print(f"\t\tCurrent number of  Medicine:{len(self.medicine_list)}")
+        print(f"\t\tCurrent number of Medicine: {len(self.medicine_list)}")
         print('-'*70)
         for ref_id, medicine_info in self.medicine_list.items():
-            print("\t\t Medicine ID:", ref_id)
+            print("\t\tMedicine ID:", ref_id)
             for key in medicine_info:
                 print(f"\t\t{key}: {medicine_info[key]}")
             print('-'*70)
@@ -74,15 +74,15 @@ class Medicine_list:
         self.load_from_file()
         self.display_medicine() 
         try:  #checks if the medicine id exists
-            update = input("\t\tChoose the medicine id/identity that you want to modify: ")
+            update = input("\t\tChoose the medicine id that you want to modify: ")
             self.medicine_list[update] 
         except KeyError:  #if not it will print out the error message
-            print("\t\t Medicine's information not found.")
+            print("\t\tMedicine's information not found.")
             input("\t\tPress enter to continue.")
         else:   #this will execute if the try block executed
-            self.medicine_list[update]["Medicine_Name"] = input("\t\tWhat will be the  medicine updated name? ")
-            self.medicine_list[update]["Price"] = input("\t\tWhat will be the medicine updated price? ")
-            self.medicine_list[update]["Quantity"] = input("\t\tWhat will be the medicine updated quantity? ")
+            self.medicine_list[update]["Medicine_Name"] = input("\t\tWhat will be the medicine's updated name? ")
+            self.medicine_list[update]["Price"] = input("\t\tWhat will be the medicine's updated price? ")
+            self.medicine_list[update]["Quantity"] = input("\t\tWhat will be the medicine's updated quantity? ")
             self.write_to_file()
 
     def delete_medicine(self):   #delete medicine
@@ -98,4 +98,17 @@ class Medicine_list:
             del self.medicine_list[delete]
             self.write_to_file()
 
-    
+    def buy_medicine(self):
+        self.load_from_file()
+        self.display_medicine()
+        try:  #checks if the id exists
+            buy = input("\t\tEnter the medicine id that you wish to purchase: ")
+            self.medicine_list[buy]
+        except KeyError:   #if not it will print out the error message
+            print("\t\tMedicine's information not found.")
+            input("\t\tPress enter to continue.")
+        else:   #this will execute if the try block executed
+            buy_quantity = input("\t\tHow many do you want to purchase? ")
+            new_quantity = int(self.medicine_list[buy]["Quantity"]) - int(buy_quantity)
+            self.medicine_list[buy]["Quantity"] = new_quantity
+            self.write_to_file()
