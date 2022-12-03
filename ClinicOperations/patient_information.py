@@ -36,7 +36,7 @@ class Patient:
                 patient_info["Age"] = input("\t\tWhat is the patient's age? ")
                 patient_info["Gender"] = input("\t\tWhat is the patient's gender? ")
                 patient_info["Address"] = input("\t\tWhat is the patient's address? ")
-                patient_info["Ailment"] = input("\t\tWhat is the patient's ailment?")
+                patient_info["Ailment"] = input("\t\tWhat is the patient's ailment? ")
                 self.patient_records[patient_id] = patient_info  #putting the patient_info dictionary inside the patient_records dictionary
         except:
             print("\t\tAn error occurred.")
@@ -63,7 +63,7 @@ class Patient:
         self.load_from_file()
         print('-'*70)
         print("\t\t-Patient Records-")
-        print(f"\t\tCurrent number of Patient:{len(self.patient_records)}")
+        print(f"\t\tCurrent number of Patient: {len(self.patient_records)}")
         print('-'*70)
         for patient_id, patient_info in self.patient_records.items():
             print("\t\tPatient ID:", patient_id)

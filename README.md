@@ -28,7 +28,7 @@
         * Price
         * Quantity
     - **Appointment List**   
-    > The admin can add, search and show an appointment.
+    > The admin can add, delete and show an appointment.
 
         * Patient's Name
         * Date of appointment
