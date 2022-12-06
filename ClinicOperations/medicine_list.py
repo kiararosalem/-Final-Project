@@ -16,12 +16,10 @@ class Medicine_list:
         else:  #if not it will load the information from the file to the dictionary
             with open('medicine_list.json') as f:
                 self.medicine_list = json.load(f)
-            f.close()
 
     def write_to_file(self):  #writing the dictionary to the json file
         with open('medicine_list.json', 'w') as f:  #writing to file
             json.dump(self.medicine_list, f, indent=4)
-        f.close()
 
     def add_medicine(self):   #add medicine 
         self.load_from_file()
@@ -71,7 +69,6 @@ class Medicine_list:
             print('-'*70)
 
     def update_medicine(self):   #update medicine 
-        self.load_from_file()
         self.display_medicine() 
         try:  #checks if the medicine id exists
             update = input("\t\tChoose the medicine id that you want to modify: ")
@@ -86,7 +83,6 @@ class Medicine_list:
             self.write_to_file()
 
     def delete_medicine(self):   #delete medicine
-        self.load_from_file()
         self.display_medicine()
         try:  #checks if the id exists
             delete = input("\t\tEnter the medicine id that you want to delete: ")
@@ -99,7 +95,6 @@ class Medicine_list:
             self.write_to_file()
 
     def buy_medicine(self):
-        self.load_from_file()
         self.display_medicine()
         try:  #checks if the id exists
             buy = input("\t\tEnter the medicine id that you wish to purchase: ")
@@ -108,7 +103,11 @@ class Medicine_list:
             print("\t\tMedicine's information not found.")
             input("\t\tPress enter to continue.")
         else:   #this will execute if the try block executed
-            buy_quantity = input("\t\tHow many do you want to purchase? ")
-            new_quantity = int(self.medicine_list[buy]["Quantity"]) - int(buy_quantity)
-            self.medicine_list[buy]["Quantity"] = new_quantity
+            try:
+                buy_quantity = input("\t\tHow many do you want to purchase? ")
+                new_quantity = int(self.medicine_list[buy]["Quantity"]) - int(buy_quantity)
+                self.medicine_list[buy]["Quantity"] = new_quantity
+            except:
+                print("\t\tOne of the values entered is not a number.")
+                input("\t\tPress enter to continue.")
             self.write_to_file()

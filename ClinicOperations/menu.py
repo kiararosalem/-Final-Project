@@ -13,12 +13,12 @@ class Menu:
     def main_menu(self):
         while True:
             print ('-'*70)
-            print("\n\n\t\tWelcome to Clinic Management System\n\n")
+            print("\n\t\tWelcome to Clinic Management System\n")
             print ('-'*70)
-            print("\n\n\t\t[1] Admin Menu")
-            print("\n\t\t[2] Patient Menu")
-            print("\n\t\t[3] Exit")
-            choice = input("\n\n\t\tWhere do you want to go? ")
+            print("\n\t\t[1] Admin Menu")
+            print("\t\t[2] Patient Menu")
+            print("\t\t[3] Exit")
+            choice = input("\n\t\tWhere do you want to go? ")
             if choice == '1':
                 self.admin_menu()
             elif choice == '2':
@@ -26,20 +26,20 @@ class Menu:
             elif choice == '3':
                 exit()
             else:
-                print("\n\n\t\tInvalid choice.") 
+                print("\n\t\tInvalid choice.") 
 
     def admin_menu(self):
         while True:
             print ('-'*70)
-            print("\n\n\t\t-----Admin Menu-----\n\n")
+            print("\n\t\t-----Admin Menu-----\n")
             print ('-'*70)
-            print("\n\n\t\t[1] Patient Records")
-            print("\n\t\t[2] Doctors' Informations")
-            print("\n\t\t[3] Medicine List")
-            print("\n\t\t[4] Appointment List")
-            print("\n\t\t[5] Go back to Main Menu")
-            print("\n\t\t[6] Exit")
-            choice = input("\n\n\t\tWhere do you want to go? ")
+            print("\n\t\t[1] Patient Records")
+            print("\t\t[2] Doctors' Informations")
+            print("\t\t[3] Medicine List")
+            print("\t\t[4] Appointment List")
+            print("\t\t[5] Go back to Main Menu")
+            print("\t\t[6] Exit")
+            choice = input("\n\t\tWhere do you want to go? ")
             if choice == '1':
                 self.patient_records_menu()
             elif choice == '2':
@@ -53,18 +53,18 @@ class Menu:
             elif choice == '6':
                 exit()
             else:
-                print("\n\n\t\tInvalid choice.") 
+                print("\n\t\tInvalid choice.") 
 
     def patient_menu(self):
         while True:
             print ('-'*70)
-            print("\n\n\t\t-----Patient Menu-----\n\n")
+            print("\n\t\t-----Patient Menu-----\n")
             print ('-'*70)
-            print("\n\n\t\t[1] Make an Appointment")
-            print("\n\t\t[2] Buy Medicine")
-            print("\n\t\t[3] Go back to Main Menu")
-            print("\n\t\t[4] Exit")
-            choice = input("\n\n\t\tWhere do you want to go? ")
+            print("\n\t\t[1] Make an Appointment")
+            print("\t\t[2] Buy Medicine")
+            print("\t\t[3] Go back to Main Menu")
+            print("\t\t[4] Exit")
+            choice = input("\n\t\tWhere do you want to go? ")
             if choice == '1':
                 self.appoint.add_appointment()
             elif choice == '2':
@@ -74,19 +74,19 @@ class Menu:
             elif choice == '4':
                 exit()
             else:
-                print("\n\n\t\tInvalid choice.") 
+                print("\n\t\tInvalid choice.") 
 
     def appointment_menu(self):
         while True:
             print ('-'*70)
-            print("\n\n\t\t-----Appointment Menu-----\n\n")
+            print("\n\t\t-----Appointment Menu-----\n")
             print ('-'*70)
-            print("\n\n\t\t[1] Make an Appointment")
-            print("\n\t\t[2] Display Appointment Lists")
-            print("\n\t\t[3] Delete Appointment")
-            print("\n\t\t[4] Go back to Main Menu")
-            print("\n\t\t[5] Exit")
-            choice = input("\n\n\t\tWhere do you want to go? ")
+            print("\n\t\t[1] Make an Appointment")
+            print("\t\t[2] Display Appointment Lists")
+            print("\t\t[3] Delete Appointment")
+            print("\t\t[4] Go back to Main Menu")
+            print("\t\t[5] Exit")
+            choice = input("\n\t\tWhere do you want to go? ")
             if choice == '1':
                 self.appoint.add_appointment()
             elif choice == '2':
@@ -99,21 +99,21 @@ class Menu:
             elif choice == '5':
                 exit()
             else:
-                print("\n\n\t\tInvalid choice.") 
+                print("\n\t\tInvalid choice.") 
 
     def patient_records_menu(self):
         while True:
             print ('-'*70)
-            print("\n\n\t\t-----Patient Records Menu-----\n\n")
+            print("\n\t\t-----Patient Records Menu-----\n")
             print ('-'*70)
-            print("\n\n\t\t[1] Add new Patient Record")
-            print("\n\t\t[2] Search Patient Record")
-            print("\n\t\t[3] View Patient Records")
-            print("\n\t\t[4] Modify Patient Record")
-            print("\n\t\t[5] Delete Patient Record")
-            print("\n\t\t[6] Go back to Admin Menu")
-            print("\n\t\t[7] Exit")
-            choice = input("\n\n\t\tWhere do you want to go? ")
+            print("\n\t\t[1] Add new Patient Record")
+            print("\t\t[2] Search Patient Record")
+            print("\t\t[3] View Patient Records")
+            print("\t\t[4] Modify Patient Record")
+            print("\t\t[5] Delete Patient Record")
+            print("\t\t[6] Go back to Admin Menu")
+            print("\t\t[7] Exit")
+            choice = input("\n\t\tWhere do you want to go? ")
             if choice == '1':
                 self.patient.add_patient()
             elif choice == '2':
@@ -130,21 +130,21 @@ class Menu:
             elif choice == '7':
                 exit()
             else:
-                print("\n\n\t\tInvalid choice.") 
+                print("\n\t\tInvalid choice.") 
 
     def doctor_information_menu(self):
         while True:
             print ('-'*70)
-            print("\n\n\t\t-----Doctor Information Menu-----\n\n")
+            print("\n\t\t-----Doctor Information Menu-----\n")
             print ('-'*70)
-            print("\n\n\t\t[1] Add new Doctor")
-            print("\n\t\t[2] Search a Doctor")
-            print("\n\t\t[3] View Doctor lists")
-            print("\n\t\t[4] Modify Doctor's Information")
-            print("\n\t\t[5] Delete Doctor's Information")
-            print("\n\t\t[6] Go back to Admin Menu")
-            print("\n\t\t[7] Exit")
-            choice = input("\n\n\t\tWhere do you want to go? ")
+            print("\n\t\t[1] Add new Doctor")
+            print("\t\t[2] Search a Doctor")
+            print("\t\t[3] View Doctor lists")
+            print("\t\t[4] Modify Doctor's Information")
+            print("\t\t[5] Delete Doctor's Information")
+            print("\t\t[6] Go back to Admin Menu")
+            print("\t\t[7] Exit")
+            choice = input("\n\t\tWhere do you want to go? ")
             if choice == '1':
                 self.doc.add_doctor()
             elif choice == '2':
@@ -161,21 +161,21 @@ class Menu:
             elif choice == '7':
                 exit()
             else:
-                print("\n\n\t\tInvalid choice.") 
+                print("\n\t\tInvalid choice.") 
 
     def medicine_menu(self):
         while True:
             print ('-'*70)
-            print("\n\n\t\t-----Medicine Menu-----\n\n")
+            print("\n\t\t-----Medicine Menu-----\n")
             print ('-'*70)
-            print("\n\n\t\t[1] Add new Medicine")
-            print("\n\t\t[2] Search a Medicine")
-            print("\n\t\t[3] View Medicine lists")
-            print("\n\t\t[4] Modify Medicine Information")
-            print("\n\t\t[5] Delete Medicine Information")
-            print("\n\t\t[6] Go back to Admin Menu")
-            print("\n\t\t[7] Exit")
-            choice = input("\n\n\t\tWhere do you want to go? ")
+            print("\n\t\t[1] Add new Medicine")
+            print("\t\t[2] Search a Medicine")
+            print("\t\t[3] View Medicine lists")
+            print("\t\t[4] Modify Medicine Information")
+            print("\t\t[5] Delete Medicine Information")
+            print("\t\t[6] Go back to Admin Menu")
+            print("\t\t[7] Exit")
+            choice = input("\n\t\tWhere do you want to go? ")
             if choice == '1':
               self.med.add_medicine()  #add
             elif choice == '2':
@@ -192,8 +192,4 @@ class Menu:
             elif choice == '7':
                 exit()
             else:
-                print("\n\n\t\tInvalid choice.") 
-            
-#driver
-start=Menu()
-start.main_menu()
+                print("\n\t\tInvalid choice.") 

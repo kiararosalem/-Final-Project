@@ -15,12 +15,10 @@ class Appointment:
         else:  #if not it will load the information from the file to the dictionary
             with open('appointment_list.json') as f:
                 self.appointment_records = json.load(f)
-            f.close()
 
     def write_to_file(self):  #writing the dictionary to the json file
         with open('appointment_list.json', 'w') as f:  #writing to file
             json.dump(self.appointment_records, f, indent=4)
-        f.close()
 
     def add_appointment(self):   #add Appointment info
         self.load_from_file()
@@ -46,7 +44,6 @@ class Appointment:
             print('-'*70)
 
     def delete_appointment(self):   #delete Appointment info
-        self.load_from_file()
         self.show_appointment()
         try:  #checks if the id exists
             delete = input("\t\tChoose the name that you want to delete: ")
