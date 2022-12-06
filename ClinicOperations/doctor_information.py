@@ -58,7 +58,7 @@ class Doctor:
         self.load_from_file()
         print('-'*70)
         print("\t\t-Doctor Records-")
-        print(f"\t\tCurrent number of Doctors:{len(self.doctor_records)}")
+        print(f"\t\tCurrent number of Doctors: {len(self.doctor_records)}")
         print('-'*70)
         for doc_id, doc_info in self.doctor_records.items():
             print("\t\tDoctor ID:", doc_id)
