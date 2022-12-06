@@ -15,12 +15,10 @@ class Patient:
         else:  #if not it will load the information from the file to the dictionary
             with open('patient_records.json') as f:
                 self.patient_records = json.load(f)
-            f.close()
 
     def write_to_file(self):  #writing the dictionary to the json file
         with open('patient_records.json', 'w') as f:  #writing to file
             json.dump(self.patient_records, f, indent=4)
-        f.close()
 
     def add_patient(self):   #add patient info
         self.load_from_file()
@@ -43,7 +41,6 @@ class Patient:
         self.write_to_file()
 
     def update_patient(self):   #update patient info
-        self.load_from_file()
         self.show_patient_info()
         try:  #checks if the patient id exists
             update = input("\t\tChoose the patient id that you want to modify: ")
@@ -72,7 +69,6 @@ class Patient:
             print('-'*70)
 
     def delete_patient(self):   #delete patient info
-        self.load_from_file()
         self.show_patient_info()
         try:  #checks if the id exists
             delete = input("\t\tChoose the patient id that you want to delete: ")
@@ -82,7 +78,6 @@ class Patient:
             input("\t\tPress enter to continue.")
         else:   #this will execute if the try block executed
             del self.patient_records[delete]
-
             self.write_to_file()
 
     def search_patient(self):   #search patient info
