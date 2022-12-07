@@ -29,7 +29,7 @@ A program that allows users to add, search, update and delete data.
         * Quantity
 
     - **Appointment List**   
-    The admin can add, delete and display appointment lists.
+    The admin can add, update, delete and display appointment lists.
         * Patient's Name
         * Date of Appointment   
         

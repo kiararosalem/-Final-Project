@@ -1,13 +1,13 @@
 import os
 import json
+from ClinicOperations.crud_system import CRUD
 
-class Medicine_list:
+class Medicine(CRUD):
     def __init__(self):
         if os.path.exists('medicine_list.json'): pass #this checks if the file exists
         else:    #if false it will create a new file
             f = open('medicine_list.json','x')
             f.close()
-
         self.medicine_list = {}
 
     def load_from_file(self):   #loads the data on the file to the dict self.medicine_list
@@ -21,7 +21,7 @@ class Medicine_list:
         with open('medicine_list.json', 'w') as f:  #writing to file
             json.dump(self.medicine_list, f, indent=4)
 
-    def add_medicine(self):   #add medicine 
+    def add(self):   #add medicine 
         self.load_from_file()
         try:
             ref_id = input("\t\tEnter the Medicine's id: ")
@@ -32,23 +32,22 @@ class Medicine_list:
             else:   #if the id doesn't exists it will execute this block of code
                 medicine_info = {}
                 medicine_info["Medicine_Name"] = input("\t\tWhat is the medicine's name? ")
-                medicine_info["Price"] = input("\t\tWhat is the medicine's price? ")
-                medicine_info["Quantity"] = input("\t\tHow many stocks would you like to have on this medicine? ")
+                medicine_info["Price"] = float(input("\t\tWhat is the medicine's price? "))
+                medicine_info["Quantity"] = int(input("\t\tHow many stocks would you like to have on this medicine? "))
                 self.medicine_list[ref_id] = medicine_info  
+                self.write_to_file()
         except:
-            print("\t\tAn error occurred.")
-        self.write_to_file()
+            print("\t\tPlease enter a number in Price/Quantity.")
+            input("\t\tPress enter to continue.")
 
-    def search_medicine(self):   #search medicine info
+    def search(self):   #search medicine info
         self.load_from_file()
         try:   #checks if the id exists
             search = input("\t\tSearch Medicine's ID: ")
             self.medicine_list[search]
-
         except KeyError:  #if the try block fails the except will catch the error
             print(f"\t\t{search} does not exist")
             input("\t\tPress enter to continue.")
-
         else:   #this will execute if the try block executed
             print('-'*70)
             for key, value in self.medicine_list[search].items():
@@ -56,7 +55,7 @@ class Medicine_list:
             print('-'*70)
             input("\t\tPress enter to continue.")
 
-    def display_medicine(self):  #display info
+    def read(self):  #display info
         self.load_from_file()
         print('-'*70)
         print("\t\t-Medicine List-")
@@ -68,8 +67,8 @@ class Medicine_list:
                 print(f"\t\t{key}: {medicine_info[key]}")
             print('-'*70)
 
-    def update_medicine(self):   #update medicine 
-        self.display_medicine() 
+    def update(self):   #update medicine 
+        self.read() 
         try:  #checks if the medicine id exists
             update = input("\t\tChoose the medicine id that you want to modify: ")
             self.medicine_list[update] 
@@ -77,13 +76,17 @@ class Medicine_list:
             print("\t\tMedicine's information not found.")
             input("\t\tPress enter to continue.")
         else:   #this will execute if the try block executed
-            self.medicine_list[update]["Medicine_Name"] = input("\t\tWhat will be the medicine's updated name? ")
-            self.medicine_list[update]["Price"] = input("\t\tWhat will be the medicine's updated price? ")
-            self.medicine_list[update]["Quantity"] = input("\t\tWhat will be the medicine's updated quantity? ")
-            self.write_to_file()
+            try:
+                self.medicine_list[update]["Medicine_Name"] = input("\t\tWhat will be the medicine's updated name? ")
+                self.medicine_list[update]["Price"] = float(input("\t\tWhat will be the medicine's updated price? "))
+                self.medicine_list[update]["Quantity"] = int(input("\t\tWhat will be the medicine's updated quantity? "))
+                self.write_to_file()
+            except:
+                print("\t\tPlease enter a number in Price/Quantity.")
+                input("\t\tPress enter to continue.")
 
-    def delete_medicine(self):   #delete medicine
-        self.display_medicine()
+    def delete(self):   #delete medicine
+        self.read()
         try:  #checks if the id exists
             delete = input("\t\tEnter the medicine id that you want to delete: ")
             self.medicine_list[delete]
@@ -94,8 +97,8 @@ class Medicine_list:
             del self.medicine_list[delete]
             self.write_to_file()
 
-    def buy_medicine(self):
-        self.display_medicine()
+    def buy(self):    #buy medicine
+        self.read()
         try:  #checks if the id exists
             buy = input("\t\tEnter the medicine id that you wish to purchase: ")
             self.medicine_list[buy]
@@ -106,8 +109,13 @@ class Medicine_list:
             try:
                 buy_quantity = input("\t\tHow many do you want to purchase? ")
                 new_quantity = int(self.medicine_list[buy]["Quantity"]) - int(buy_quantity)
-                self.medicine_list[buy]["Quantity"] = new_quantity
+                if new_quantity < 0:
+                    print("\t\tThe quantity that you want to buy exceeded our stock.")
+                    input("\t\tPress enter to continue.")
+                    return
+                else:
+                    self.medicine_list[buy]["Quantity"] = new_quantity
+                    self.write_to_file()
             except:
-                print("\t\tOne of the values entered is not a number.")
+                print("\t\tAn error occurred.")
                 input("\t\tPress enter to continue.")
-            self.write_to_file()

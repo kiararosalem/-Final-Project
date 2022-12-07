@@ -1,7 +1,8 @@
 import os
 import json
+from ClinicOperations.crud_system import CRUD
 
-class Doctor:
+class Doctor(CRUD):
     def __init__(self):
         if os.path.exists('doctor_records.json'): pass #this checks if the file exists
         else:    #if not it will create a new file
@@ -20,7 +21,7 @@ class Doctor:
         with open('doctor_records.json', 'w') as f:  #writing to file
             json.dump(self.doctor_records, f, indent=4)
 
-    def add_doctor(self):   #add doctor info
+    def add(self):   #add doctor info
         self.load_from_file()
         try:
             doc_id = input("\t\tEnter the doctor's id: ")
@@ -35,12 +36,12 @@ class Doctor:
                 doctor_info["Gender"] = input("\t\tWhat is the doctor's gender? ")
                 doctor_info["Address"] = input("\t\tWhat is the doctor's address? ")
                 self.doctor_records[doc_id] = doctor_info  #putting the doctor_info dictionary inside the doctor_records dictionary
+                self.write_to_file()
         except:
             print("\t\tAn error occurred.")
-        self.write_to_file()
 
-    def update_doctor(self):   #update doctor info
-        self.show_doc_info()
+    def update(self):   #update doctor info
+        self.read()
         try:  #checks if the doctor id exists
             update = input("\t\tChoose the doctor id that you want to modify: ")
             self.doctor_records[update] 
@@ -54,7 +55,7 @@ class Doctor:
             self.doctor_records[update]["Address"] = input("\t\tWhat will be the updated address? ")
             self.write_to_file()
 
-    def show_doc_info(self):  #display informations
+    def read(self):  #display informations
         self.load_from_file()
         print('-'*70)
         print("\t\t-Doctor Records-")
@@ -66,8 +67,8 @@ class Doctor:
                 print(f"\t\t{key}: {doc_info[key]}")
             print('-'*70)
 
-    def delete_doctor(self):   #delete doctor info
-        self.show_doc_info()
+    def delete(self):   #delete doctor info
+        self.read()
         try:  #checks if the id exists
             delete = input("\t\tChoose the doctor id that you want to delete: ")
             self.doctor_records[delete]
@@ -78,7 +79,7 @@ class Doctor:
             del self.doctor_records[delete]
             self.write_to_file()
 
-    def search_doctor(self):   #search doctor info
+    def search(self):   #search doctor info
         self.load_from_file()
         try:   #checks if the id exists
             search = input("\t\tSearch Doctor's ID: ")

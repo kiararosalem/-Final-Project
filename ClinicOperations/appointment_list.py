@@ -1,7 +1,8 @@
 import os
 import json
+from ClinicOperations.crud_system import CRUD
 
-class Appointment:
+class Appointment(CRUD):
     def __init__(self):
         if os.path.exists('appointment_list.json'): pass #this checks if the file exists
         else:    #if not it will create a new file
@@ -20,20 +21,26 @@ class Appointment:
         with open('appointment_list.json', 'w') as f:  #writing to file
             json.dump(self.appointment_records, f, indent=4)
 
-    def add_appointment(self):   #add Appointment info
+    def add(self):   #add Appointment info
         self.load_from_file()
         try:
             name = input("\t\tWhat is the Patient's name? ")
-            month = input("\t\tWhich month of the year (1-12)?  ")
-            day = input("\t\tWhich day of the month? ")
-            year = input("\t\tWhat year? ")
-            date = (f"{month}/{day}/{year}")
-            self.appointment_records[name] = str(date)
-            self.write_to_file()
+            if name in self.appointment_records:   #checks if the id already exists
+                print("\t\tName already exists.")
+                input("\t\tPress enter to continue.")
+                return
+            else:
+                month = int(input("\t\tWhich month of the year (1-12)?  "))
+                day = int(input("\t\tWhich day of the month? "))
+                year = int(input("\t\tWhat year? "))
+                date = (f"{month}/{day}/{year}")
+                self.appointment_records[name] = date
+                self.write_to_file()
         except:
-            print("\t\tAn error occurred.")
+            print("\t\tYou did not enter a number.")
+            input("\t\tPress enter to continue.")
 
-    def show_appointment(self):  #display informations
+    def read(self):  #display informations
         self.load_from_file()
         print('-'*70)
         print("\t\t-Appointment Records-")
@@ -43,7 +50,27 @@ class Appointment:
             print(f"\t\t{key}: {self.appointment_records[key]}")
             print('-'*70)
 
-    def delete_appointment(self):   #delete Appointment info
+    def update(self):   #update appointment info
+        self.read()
+        try:  #checks if the appointment name exists
+            update = input("\t\tChoose the name that you want to modify: ")
+            self.appointment_records[update] 
+        except KeyError:  #if not it will print out the error message
+            print("\t\tAppointment information not found.")
+            input("\t\tPress enter to continue.")
+        else:   #this will execute if the try block executed
+            try:
+                month = int(input("\t\What is the updated month(1-12)? "))
+                day = int(input("\t\tWhat is the updated day of the month? "))
+                year = int(input("\t\tWhat is the updated year? "))
+                date = (f"{month}/{day}/{year}")
+                self.appointment_records[update] = date
+                self.write_to_file()
+            except:
+                print("You did not input a number.")
+                input("\t\tPress enter to continue.")
+
+    def delete(self):   #delete Appointment info
         self.show_appointment()
         try:  #checks if the id exists
             delete = input("\t\tChoose the name that you want to delete: ")

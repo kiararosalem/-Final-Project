@@ -1,13 +1,13 @@
-from ClinicOperations.doctor_information import *
-from ClinicOperations.patient_information import *
-from ClinicOperations.medicine_list import *
-from ClinicOperations.appointment_list import *
+from ClinicOperations.doctor_information import Doctor
+from ClinicOperations.patient_information import Patient
+from ClinicOperations.medicine_list import Medicine
+from ClinicOperations.appointment_list import Appointment
 
 class Menu:
     def __init__(self):
         self.doc=Doctor()
         self.patient=Patient()
-        self.med=Medicine_list()
+        self.med=Medicine()
         self.appoint=Appointment()
 
     def main_menu(self):
@@ -66,9 +66,9 @@ class Menu:
             print("\t\t[4] Exit")
             choice = input("\n\t\tWhere do you want to go? ")
             if choice == '1':
-                self.appoint.add_appointment()
+                self.appoint.add()
             elif choice == '2':
-                self.med.buy_medicine()
+                self.med.buy()
             elif choice == '3':
                 return
             elif choice == '4':
@@ -82,21 +82,24 @@ class Menu:
             print("\n\t\t-----Appointment Menu-----\n")
             print ('-'*70)
             print("\n\t\t[1] Make an Appointment")
-            print("\t\t[2] Display Appointment Lists")
-            print("\t\t[3] Delete Appointment")
-            print("\t\t[4] Go back to Main Menu")
-            print("\t\t[5] Exit")
+            print("\t\t[2] View Appointment lists")
+            print("\t\t[3] Modify Appointment")
+            print("\t\t[4] Delete Appointment")
+            print("\t\t[5] Go back to Admin Menu")
+            print("\t\t[6] Exit")
             choice = input("\n\t\tWhere do you want to go? ")
             if choice == '1':
-                self.appoint.add_appointment()
+                self.appoint.add()
             elif choice == '2':
-                self.appoint.show_appointment()
+                self.appoint.read()
                 input("\t\tPress enter to continue.")
             elif choice == '3':
-                self.appoint.delete_appointment()
+                self.appoint.update()
             elif choice == '4':
-                return
+                self.appoint.delete()
             elif choice == '5':
+                return
+            elif choice == '6':
                 exit()
             else:
                 print("\n\t\tInvalid choice.") 
@@ -115,16 +118,16 @@ class Menu:
             print("\t\t[7] Exit")
             choice = input("\n\t\tWhere do you want to go? ")
             if choice == '1':
-                self.patient.add_patient()
+                self.patient.add()
             elif choice == '2':
-                self.patient.search_patient()
+                self.patient.search()
             elif choice == '3':
-                self.patient.show_patient_info()
+                self.patient.read()
                 input("\t\tPress enter to continue.")
             elif choice == '4':
-                self.patient.update_patient()
+                self.patient.update()
             elif choice == '5':
-                self.patient.delete_patient()
+                self.patient.delete()
             elif choice == '6':
                 return
             elif choice == '7':
@@ -146,16 +149,16 @@ class Menu:
             print("\t\t[7] Exit")
             choice = input("\n\t\tWhere do you want to go? ")
             if choice == '1':
-                self.doc.add_doctor()
+                self.doc.add()
             elif choice == '2':
-                self.doc.search_doctor()
+                self.doc.search()
             elif choice == '3':
-                self.doc.show_doc_info()
+                self.doc.read()
                 input("\t\tPress enter to continue.")
             elif choice == '4':
-                self.doc.update_doctor()
+                self.doc.update()
             elif choice == '5':
-                self.doc.delete_doctor()
+                self.doc.delete()
             elif choice == '6':
                 return
             elif choice == '7':
@@ -173,23 +176,26 @@ class Menu:
             print("\t\t[3] View Medicine lists")
             print("\t\t[4] Modify Medicine Information")
             print("\t\t[5] Delete Medicine Information")
-            print("\t\t[6] Go back to Admin Menu")
-            print("\t\t[7] Exit")
+            print("\t\t[6] Buy Medicine")
+            print("\t\t[7] Go back to Admin Menu")
+            print("\t\t[8] Exit")
             choice = input("\n\t\tWhere do you want to go? ")
             if choice == '1':
-              self.med.add_medicine()  #add
+              self.med.add()  #add
             elif choice == '2':
-              self.med.search_medicine()   #search
+              self.med.search()   #search
             elif choice == '3':
-                self.med.display_medicine()
-                input("\t\tPress enter to continue.")   #view/display/show
+                self.med.read()     #view/display/show
+                input("\t\tPress enter to continue.")   
             elif choice == '4':
-                self.med.update_medicine()   #update/modify
+                self.med.update()   #update/modify
             elif choice == '5':
-                self.med.delete_medicine()    #delete
+                self.med.delete()    #delete
             elif choice == '6':
-                return
+                self.med.buy()    #buy medicine
             elif choice == '7':
+                return
+            elif choice == '8':
                 exit()
             else:
                 print("\n\t\tInvalid choice.") 
