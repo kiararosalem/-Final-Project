@@ -1,9 +1,10 @@
 # **Clinic Management System**
 
-## **General Information**
-A program that allows users to add, search, update and delete data. 
+This is a program that allows users to add, search, update and delete data. It can also save this datas in to a file.
 
-### **Main Menu**
+## **Overview of the Program**
+---
+**Main Menu**   
 - **Admin Menu**   
     In this option, the admin has an access to the medical records of the patient, information of the doctor, the medicine and appointment list.
 
@@ -38,3 +39,17 @@ A program that allows users to add, search, update and delete data.
 
     - **Make an Appointment**
     - **Buy Medicine**
+
+## **Prerequisites**   
+---
+Make sure you have the following prerequisites:   
+* Maskpass - You're going to use the [Maskpass Module](https://pypi.org/project/maskpass/) to hide the password during input time.   
+```
+pip install maskpass
+```
+
+## **UML Diagram**
+---
+This is the diagram for our program.   
+
+![Diagram](UML-Diagram.png "UML Diagram")
