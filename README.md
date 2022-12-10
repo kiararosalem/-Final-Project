@@ -1,9 +1,7 @@
-# **Clinic Management System**
-
+# Clinic Management System
 This is a program that allows users to add, search, update and delete data. It can also save this datas in to a file.
 
-## **Overview of the Program**
----
+## Overview of the Program
 **Main Menu**   
 - **Admin Menu**   
     In this option, the admin has an access to the medical records of the patient, information of the doctor, the medicine and appointment list.
@@ -40,16 +38,29 @@ This is a program that allows users to add, search, update and delete data. It c
     - **Make an Appointment**
     - **Buy Medicine**
 
-## **Prerequisites**   
----
+## Prerequisites
 Make sure you have the following prerequisites:   
 * Maskpass - You're going to use the [Maskpass Module](https://pypi.org/project/maskpass/) to hide the password during input time.   
 ```
 pip install maskpass
 ```
 
-## **UML Diagram**
----
+## UML Diagram
 This is the diagram for our program.   
 
-![Diagram](UML-Diagram.png "UML Diagram")
+![Diagram](images/UML-Diagram.png "UML Diagram")
+
+## Self-Assessment
+This is the rubric provided:
+![Rubrics](images/Rubrics.png "Rubrics")
+
+And this is our grade to our own work:
+
+| Metric             | 4 | 3 | 2 | 1 |
+|--------------------|---|---|---|---|
+| Code Reusability   |   | ✓ |   |   |
+| Maintainability    | ✓ |   |   |   |
+| Scalability        |   | ✓ |   |   |
+| Execution          |   | ✓ |   |   |
+| Originality        | ✓ |   |   |   |
+| Overall Impression | ✓ |   |   |   |
