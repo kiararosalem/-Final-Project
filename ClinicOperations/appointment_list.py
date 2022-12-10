@@ -60,7 +60,7 @@ class Appointment(CRUD):
             input("\t\tPress enter to continue.")
         else:   #this will execute if the try block executed
             try:
-                month = int(input("\t\What is the updated month(1-12)? "))
+                month = int(input("\t\tWhat is the updated month(1-12)? "))
                 day = int(input("\t\tWhat is the updated day of the month? "))
                 year = int(input("\t\tWhat is the updated year? "))
                 date = (f"{month}/{day}/{year}")
@@ -71,7 +71,7 @@ class Appointment(CRUD):
                 input("\t\tPress enter to continue.")
 
     def delete(self):   #delete Appointment info
-        self.show_appointment()
+        self.read()
         try:  #checks if the id exists
             delete = input("\t\tChoose the name that you want to delete: ")
             self.appointment_records[delete]
