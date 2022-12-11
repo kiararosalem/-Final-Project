@@ -57,4 +57,9 @@ pip install maskpass
 ![Diagram](images/UML-Diagram.png "UML Diagram")
 
 ## Video Presentation
-https://youtu.be/thM-asuwKtQ
+Click the image to watch the video.
+
+[![Watch the video](https://img.youtube.com/vi/thM-asuwKtQ/maxresdefault.jpg)](https://youtu.be/thM-asuwKtQ)
+
+## Conclusion
+In this system, we are able to learn more and develop our coding skills using the Python Language. Here in our program, we applied the OOP principles such as Inheritance, Abstraction and Polymorphism which makes the program more advanced. Making this program will become an advantage for us because we will be able to put the knowledge we have acquired to our future careers.
